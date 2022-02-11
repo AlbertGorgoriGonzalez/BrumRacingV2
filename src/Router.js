@@ -8,6 +8,8 @@ import AboutUs from "./components/AboutUs/Component"
 import Footer from "./components/Footer/Component";
 import Tutorial from "./components/Tutorial/Component";
 import Rankings from "./components/Rankings/Component";
+import UserPage from "./components/UserPage/Component";
+
 
 import { BrowserRouter, Routes, Route, NotFoundRoute } from 'react-router-dom';
 
@@ -24,6 +26,7 @@ const RouterWeb = () => {
                 <Route path='/about-us' element={<AboutUs/>}/>
                 <Route path='/rankings' element={<Rankings/>}/>
                 <Route path='/tutorial' element={<Tutorial/>}/>
+                <Route path='/userInfo' element={<UserPage/>}/>
                 <Route path='*' element={<ErrorPage/>} />
             </Routes>
         <Footer/>

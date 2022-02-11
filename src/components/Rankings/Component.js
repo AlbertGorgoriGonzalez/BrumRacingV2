@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import HeaderSection from "../Utils/HeaderSection";
 import RankingTable from "./Table";
+import Filter from "./FilterSelector";
 
 export default function Rankings(props) {
   const TextHeader = {
@@ -14,10 +15,12 @@ export default function Rankings(props) {
         <div className="container flex justify-center mx-auto pt-16">
           <HeaderSection text={TextHeader} />
         </div>
-        <div></div>
-        <section class="container mx-auto p-6 font-mono">
-          <div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
-            <div class="w-full overflow-x-auto">
+        <div>
+          <Filter/>
+        </div>
+        <section className="container mx-auto p-6 font-mono">
+          <div className="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
+            <div className="w-full overflow-x-auto">
               <RankingTable />
             </div>
           </div>
