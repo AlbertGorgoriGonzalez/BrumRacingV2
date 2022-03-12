@@ -22,11 +22,5 @@ export const MenuItems = [
         url: '#',
         cName: 'nav-links',
         linkName: 'about-us'
-    },
-    {
-        title: 'Registrate',
-        url: '#',
-        cName: 'nav-links-mobile',
-        linkName: 'register'
     }
 ]

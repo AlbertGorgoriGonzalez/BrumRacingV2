@@ -4,10 +4,14 @@ import { MenuItems } from "./MenuItems/menuItem";
 import { Button } from "./buttons/buttons";
 import "./navBar.css";
 import worldIcon from "../../assets/images/world.png";
+import { useUser } from "../../context/usuarioContext";
+import {getToken} from "../../assets/utils/helper";
 
 function Navbar() {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
+
+  const {userInfo} = useUser()
 
   const handleClick = () => setClick(!click);
   //   const closeMobileMenu = () => setClick(false);
@@ -45,12 +49,21 @@ function Navbar() {
         })}
       </ul>
       <img src={worldIcon} className="icon-header nav-links" alt="Logo" />
-      <Link to={"/register"}>
+      {!getToken() &&
+      <>
+        <Link to={"/register"}>
         <Button>Sign Up</Button>
-      </Link>
-      <Link to={"/login"}>
+        </Link>
+        <Link to={"/login"}>
         <Button>Login</Button>
-      </Link>
+        </Link>
+        </>
+      }
+      {getToken() &&
+        <Link to={"/userInfo"}>
+        <Button>Profile</Button>
+        </Link>
+      }
     </nav>
   );
 }

@@ -1,15 +1,23 @@
 import React, { useState, useEffect } from "react";
 import HeaderSection from "../Utils/HeaderSection";
 
-export default function ListElementProfile(props) {
-  const {visible} = props;
-  const onSectionView = () => {
-    visible(props.item.name);
+export default function LogoutButton(props) {
+
+    const {logout, loginNavigation} = props
+
+  const infoLogout = {
+    "name": "Logout",
+    "href": "#",
+    "imgSvg": "M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+  }
+  const onPressLogout = () => {
+    loginNavigation()
+    logout()
   }
   return (
-    <li onClick={onSectionView}>
+    <li onClick={onPressLogout}>
       <a
-        href={props.item.href}
+        href={infoLogout.href}
         className="flex items-center space-x-3 text-gray-700 p-2 rounded-md font-medium hover:bg-gray-200 focus:bg-gray-200 focus:shadow-outline"
       >
         <span className="text-gray-600">
@@ -24,11 +32,11 @@ export default function ListElementProfile(props) {
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth="2"
-              d={props.item.imgSvg}
+              d={infoLogout.imgSvg}
             />
           </svg>
         </span>
-        <span>{props.item.name}</span>
+        <span>{infoLogout.name}</span>
       </a>
     </li>
   );
