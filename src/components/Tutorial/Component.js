@@ -18,7 +18,7 @@ export default function Tutorial() {
           autoplay: 1,
         }
       }
-    const sYoutubeId = getYouTubeID("https://www.youtube.com/watch?v=dbENZmcWy34")
+    const sYoutubeId = getYouTubeID("https://www.youtube.com/watch?v=0iyWnlS45BU")
   
   return (
     <div className="mb-16">
