@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState, useEffect, useMemo } from "react";
 //TODO: Libreria Helper Tokens https://www.youtube.com/results?search_query=token+helper+react
 import { urlApiLaravel } from "../assets/utils/global";
-import { getToken, setToken, deleteToken } from "../assets/utils/helper";
+import { getToken, setToken, deleteToken, parseBackendError } from "../assets/utils/helper";
 
 const UserContext = React.createContext();
 
@@ -28,16 +28,20 @@ export function UserProvider(props) {
   }, []);
 
   async function login(oForm) {
+    const headers = {
+      'X-Requested-With': 'XMLHttpRequest',
+      'X-CSRF-TOKEN' : 'X'
+    }
     try {
-      const {data} = await axios.post(urlApiLaravel + "/login", oForm);
+      const {data} = await axios.post(urlApiLaravel + "/login", oForm, headers);
 
-      setUserInfo(data.userInfo);
+      setUserInfo(data.body);
       //TODO: TOKENS
-      setToken(data.access_token);
+      setToken(data.token);
 
       return true;
     } catch (error) {
-
+      parseBackendError(error);
         if(error){
             return error.response
         }else{

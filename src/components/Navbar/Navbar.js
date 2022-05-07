@@ -47,8 +47,12 @@ function Navbar() {
             </Link>
           );
         })}
+        <li>
+                <a className='nav-links' href='#'>
+                  Idioma
+                </a>
+              </li>
       </ul>
-      <img src={worldIcon} className="icon-header nav-links" alt="Logo" />
       {(!userInfo || !userInfo.id) &&
       <>
         <Link to={"/register"}>
