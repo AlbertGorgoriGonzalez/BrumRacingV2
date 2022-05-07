@@ -2,10 +2,9 @@ import React, { useState, useEffect } from "react";
 import CardEmployee from "./CardEmployee";
 import HeaderSection from "../Utils/HeaderSection";
 import imgAlbert from '../../assets/images/AlbertGorgori.jpg';
-import imgMiquel from '../../assets/images/miquelLopez.jpg';
+import imgMiquel from '../../assets/images/MiquelLopez.jpg';
 import imgBeimar from '../../assets/images/BeimarTorrez.jpg';
-import imgMarc from '../../assets/images/MarcMa.jpg';
-
+import imgMarc from '../../assets/images/MarcMartinez.jpg';
 
 export default function AboutUs() {
   const DevelopmentTeam = [{
