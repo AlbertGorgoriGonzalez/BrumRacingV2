@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import CardEmployee from "./CardEmployee";
 import HeaderSection from "../Utils/HeaderSection";
 import imgAlbert from '../../assets/images/AlbertGorgori.jpg';
-import imgMiquel from '../../assets/images/MiquelLopez.jpg';
 import imgBeimar from '../../assets/images/BeimarTorrez.jpg';
 import imgMarc from '../../assets/images/MarcMartinez.jpg';
 
@@ -20,7 +19,7 @@ export default function AboutUs() {
     username: "Lopez",
     position: "Senior Back-End Developer",
     description: "Vivo el mundo de las carreras con mucha pasión, juntarlo con mi trabajo ha sido la mejor experiéncia de mi vida",
-    profileImg: imgMiquel,
+    profileImg: imgAlbert,
     instagramUrl: "https://www.instagram.com/miqueel97/",
     linkedinUrl: "https://www.linkedin.com/in/miquel-l%C3%B3pez-139246182/"
   },
