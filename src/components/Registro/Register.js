@@ -3,16 +3,26 @@ import Logo from '../../assets/images/Logo.png';
 import RegisterForm from './Form';
 import { Navigate } from "react-router-dom";
 import { useUser } from "../../context/usuarioContext";
+import { parseBackendError } from "../../assets/utils/helper";
 
 export default function SignUp() {
 
   const [validationForm, setValidationForm] = useState(false);
   const [bValid, setBValid ] = useState(false)
-  const {signUpRegister, userInfo} = useUser()
+  const {signUpRegister, userInfo} = useUser();
+  const [navigate, setNavigate] = useState(false)
 
-  const handleSubmit = (oForm) => {
-      signUpRegister(oForm)
+  const handleSubmit = async (oForm) => {
       setValidationForm(false);
+
+      let response = await signUpRegister(oForm);
+
+    if(response === true){
+      setNavigate(response);
+    }else{
+      parseBackendError(response)
+      
+    }
   }
 
 
@@ -28,7 +38,7 @@ export default function SignUp() {
     </div>
     <RegisterForm isValidating={validationForm} onSubmitForm={handleSubmit}/>
   </div>
-  {userInfo && userInfo.id &&
+  {navigate &&
     <Navigate to={'/userInfo'} />
   }
 </div>

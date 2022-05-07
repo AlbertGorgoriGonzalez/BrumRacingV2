@@ -275,6 +275,7 @@ export default function SignUp(props) {
               Editar
             </button>
           )}
+          
         </div>
       </form>
       <label />

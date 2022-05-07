@@ -71,7 +71,8 @@ setLogin(true)
   };
 
   return (
-    <div className="mb-16">
+    <>
+    {userInfo && <div className="mb-16">
       <dh-component>
         <div className="flex flex-wrap bg-gray-100 w-full h-screen">
           <div className="w-3/12 bg-white rounded p-3 shadow-lg">
@@ -99,9 +100,13 @@ setLogin(true)
           </div>
         </div>
       </dh-component>
-      {login &&
+    </div>}
+    <>
+    {(!userInfo || login) &&
         <Navigate to={'/login'} />
       }
-    </div>
+    </>
+    </>
+
   );
 }

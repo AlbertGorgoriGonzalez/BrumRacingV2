@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import Logo from '../../assets/images/Logo.png';
 import { useUser } from "../../context/usuarioContext";
 import { Navigate } from "react-router-dom";
+import { parseBackendError } from "../../assets/utils/helper";
+import Swal from "sweetalert2";
 
 
 export default function SignIn() {
@@ -28,8 +30,14 @@ export default function SignIn() {
   };
 
   const onGoToProfile = async (oForm) => {
-    let bResponse = await login(oForm);
-    setNavigate(bResponse);
+    let response = await login(oForm);
+
+    if(response === true){
+      setNavigate(response);
+    }else{
+      parseBackendError(response)
+      
+    }
 
   }
 

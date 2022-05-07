@@ -2,42 +2,46 @@ import React, { useState, useEffect } from "react";
 import CardEmployee from "./CardEmployee";
 import HeaderSection from "../Utils/HeaderSection";
 import imgAlbert from '../../assets/images/AlbertGorgori.jpg';
+import imgMiquel from '../../assets/images/miquelLopez.jpg';
+import imgBeimar from '../../assets/images/BeimarTorrez.jpg';
+import imgMarc from '../../assets/images/MarcMa.jpg';
+
 
 export default function AboutUs() {
   const DevelopmentTeam = [{
     name: "Albert",
     username: "Gorgori",
-    position: "Manager Development",
+    position: "Senior Front-End Developer",
     description: "Generar el mejor entretenimiento para los amantes y apasionados de los videojuegos de carreras",
     profileImg: imgAlbert,
     instagramURL: "https://www.instagram.com/albert.gorgori/",
     linkedinUrl: "https://www.linkedin.com/in/albert-gorgori-436a24115/"
   },{
-    name: "Albert",
-    username: "Gorgori",
-    position: "Manager Development",
-    description: "Generar el mejor entretenimiento para los amantes y apasionados de los videojuegos de carreras",
-    profileImg: imgAlbert,
-    instagramUrl: "https://www.instagram.com/albert.gorgori/",
-    linkedinUrl: "https://www.linkedin.com/in/albert-gorgori-436a24115/"
+    name: "Miquel",
+    username: "Lopez",
+    position: "Senior Back-End Developer",
+    description: "Vivo el mundo de las carreras con mucha pasión, juntarlo con mi trabajo ha sido la mejor experiéncia de mi vida",
+    profileImg: imgMiquel,
+    instagramUrl: "https://www.instagram.com/miqueel97/",
+    linkedinUrl: "https://www.linkedin.com/in/miquel-l%C3%B3pez-139246182/"
   },
   {
-    name: "Albert",
-    username: "Gorgori",
-    position: "Manager Development",
-    description: "Generar el mejor entretenimiento para los amantes y apasionados de los videojuegos de carreras",
-    profileImg: imgAlbert,
-    instagramUrl: "https://www.instagram.com/albert.gorgori/",
-    linkedinUrl: "https://www.linkedin.com/in/albert-gorgori-436a24115/"
+    name: "Marc",
+    username: "Martínez",
+    position: "Junior Unity Developer",
+    description: "Es mágnifico el mundo de las carreras, este juego va a ser un éxito mundial",
+    profileImg: imgMarc,
+    instagramUrl: "https://www.instagram.com/marc_martinez012/",
+    linkedinUrl: "https://www.linkedin.com/in/marc-mart%C3%ADnez-morales-635427226/"
   },
   {
-    name: "Albert",
-    username: "Gorgori",
-    position: "Manager Development",
-    description: "Generar el mejor entretenimiento para los amantes y apasionados de los videojuegos de carreras",
-    profileImg: imgAlbert,
-    instagramUrl: "https://www.instagram.com/albert.gorgori/",
-    linkedinUrl: "https://www.linkedin.com/in/albert-gorgori-436a24115/"
+    name: "Beimar",
+    username: "Torrez",
+    position: "Junior C# Developer",
+    description: "El juego está diseñado para disfrutar cada curva, no va a defraudar",
+    profileImg: imgBeimar,
+    instagramUrl: "https://www.instagram.com/beimartorrz/",
+    linkedinUrl: "https://www.linkedin.com/in/beimar-torrez-10229620a/"
   }];
   const TextHeader = {
     headerText: "Development Team",

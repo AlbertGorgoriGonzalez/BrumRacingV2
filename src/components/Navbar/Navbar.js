@@ -49,7 +49,7 @@ function Navbar() {
         })}
       </ul>
       <img src={worldIcon} className="icon-header nav-links" alt="Logo" />
-      {!getToken() &&
+      {(!userInfo || !userInfo.id) &&
       <>
         <Link to={"/register"}>
         <Button>Sign Up</Button>
@@ -59,7 +59,7 @@ function Navbar() {
         </Link>
         </>
       }
-      {getToken() &&
+      {userInfo && userInfo.id &&
         <Link to={"/userInfo"}>
         <Button>Profile</Button>
         </Link>
