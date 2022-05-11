@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
+import {useTranslation} from 'react-i18next';
 
 export default function Footer() {
+
+  const [t] = useTranslation("global");
 
     function toggleFooterSection(e) {
         const list = e.target.parentElement.parentElement.querySelector(
@@ -31,7 +34,7 @@ export default function Footer() {
             <p
               className="uppercase text-xs font-bold tracking-wider text-black-700 hidden md:block"
             >
-              Redes sociales
+              {t("footer.rrss")}
             </p>
             <article className="h-0 md:h-auto -mt-4 md:mt-0 overflow-hidden">
               <ul className="my-5 text-sm tracking-wide">
@@ -54,7 +57,7 @@ export default function Footer() {
             <p
               className="uppercase text-xs font-bold tracking-wider text-black-700 hidden md:block"
             >
-              Otros links
+              {t("footer.links")}
             </p>
             <article className="h-0 md:h-auto -mt-4 md:mt-0 overflow-hidden">
               <ul className="my-5 text-sm tracking-wide">
@@ -74,7 +77,7 @@ export default function Footer() {
             </p>
           </div>
           <div>
-            <p className="leading-8 tracking-wide">Políticas Privadas</p>
+            <p className="leading-8 tracking-wide">{t("footer.policy")}</p>
           </div>
         </section>
       </div>

@@ -1,0 +1,29 @@
+{
+    "header":{
+        "lang": "Language",
+        "home": "Home",
+        "tutorial": "Tutorial",
+        "rankings":"Rankings",
+        "contactus":"Contact-Us",
+        "login":"Login",
+        "signup":"Register!",
+        "profile":"Profile"
+    },
+    "home":{
+        "racing": "What are you waiting for?",
+        "download" : "DOWNLOAD",
+        "seetutorial" : "SEE TUTORIAL"
+    },
+    "footer":{
+        "rrss": "Social Networks",
+        "links" : "Other Links",
+        "policy": "Policy Private"
+    },
+    "ranking":{
+        "player": "Player",
+        "circuit": "Circuit",
+        "date":"Date",
+        "time": "Time",
+        "chooseCircuit": "Choose a circuit"
+    }
+}   

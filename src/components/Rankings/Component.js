@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import HeaderSection from "../Utils/HeaderSection";
 import RankingTable from "./Table";
 import Filter from "./FilterSelector";
+import {useTranslation} from 'react-i18next';
 
 export default function Rankings(props) {
+  const [t, i18n] = useTranslation("global");
   const TextHeader = {
     headerText: "",
-    subheaderText: "Rankings",
+    subheaderText: t("header.rankings"),
   };
 
   return (

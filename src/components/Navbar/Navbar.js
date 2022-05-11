@@ -6,12 +6,19 @@ import "./navBar.css";
 import worldIcon from "../../assets/images/world.png";
 import { useUser } from "../../context/usuarioContext";
 import {getToken} from "../../assets/utils/helper";
+import {useTranslation} from 'react-i18next';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGlobe } from '@fortawesome/free-solid-svg-icons';
+
 
 function Navbar() {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
+  const [isSpanish, setIsSpanish] = useState(true)
 
-  const {userInfo} = useUser()
+  const {userInfo} = useUser();
+
+  const [t, i18n] = useTranslation("global");
 
   const handleClick = () => setClick(!click);
   //   const closeMobileMenu = () => setClick(false);
@@ -28,6 +35,16 @@ function Navbar() {
     showButton();
   }, []);
 
+  const changeLang = () => {
+    if(isSpanish){
+      i18n.changeLanguage("en");
+      setIsSpanish(false)
+    }else{
+      i18n.changeLanguage("es");
+      setIsSpanish(true)
+    }
+  } 
+
   window.addEventListener("resize", showButton);
 
   return (
@@ -41,31 +58,35 @@ function Navbar() {
             <Link to={"/" + item.linkName}>
               <li>
                 <a className={item.cName} href={item.url}>
-                  {item.title}
+                  {t(item.title)}
                 </a>
               </li>
             </Link>
           );
         })}
         <li>
-                <a className='nav-links' href='#'>
-                  Idioma
+                <a className='nav-links'href='#'>
+                  <button type="button" onClick={changeLang} data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus
+                  sagittis lacus vel augue laoreet rutrum faucibus.">
+                    <FontAwesomeIcon icon={faGlobe} />
+                  </button>
+                  
                 </a>
               </li>
       </ul>
       {(!userInfo || !userInfo.id) &&
       <>
         <Link to={"/register"}>
-        <Button>Sign Up</Button>
+        <Button>{t("header.signup")}</Button>
         </Link>
         <Link to={"/login"}>
-        <Button>Login</Button>
+        <Button>{t("header.login")}</Button>
         </Link>
         </>
       }
       {userInfo && userInfo.id &&
         <Link to={"/userInfo"}>
-        <Button>Profile</Button>
+        <Button>{t("header.profile")}</Button>
         </Link>
       }
     </nav>

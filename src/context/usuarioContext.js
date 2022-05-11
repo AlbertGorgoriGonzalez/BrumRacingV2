@@ -21,7 +21,7 @@ export function UserProvider(props) {
         setUserInfo(usuario);
         setLoadingUser(false);
       } catch (error) {
-        console.log("Error");
+        
       }
     }
     cargarUsuario();

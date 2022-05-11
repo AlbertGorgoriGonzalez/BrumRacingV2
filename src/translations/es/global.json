@@ -1,0 +1,29 @@
+{
+    "header":{
+        "lang": "Idioma",
+        "home": "Menú",
+        "tutorial": "Tutorial",
+        "rankings":"Clasificación",
+        "contactus":"Nosotros",
+        "login":"Acceder",
+        "signup":"Registrate!",
+        "profile":"Perfil"
+    },
+    "home":{
+        "racing": "A que estás esperando?",
+        "download" : "DESCARGA",
+        "seetutorial" : "VER TUTORIAL"
+    },
+    "footer":{
+        "rrss": "Redes sociales",
+        "links" : "Otros Links",
+        "policy": "Politicas privadas"
+    },
+    "ranking":{
+        "player": "Jugador",
+        "circuit": "Circuito",
+        "date":"Fecha",
+        "time": "Tiempo",
+        "chooseCircuit": "Escoje un circuito"
+    }
+}

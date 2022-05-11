@@ -31,7 +31,6 @@ export function initAxiosInterceptors() {
     }, function(error) {
 
         if(error.response.status === 401){
-            console.log('Error: '+ error.response.status)
         }
         return Promise.reject(error)
 
