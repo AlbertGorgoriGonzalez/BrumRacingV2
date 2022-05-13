@@ -2,14 +2,35 @@ import React, { useState, useEffect } from "react";
 import HeaderSection from "../Utils/HeaderSection";
 import RankingTable from "./Table";
 import Filter from "./FilterSelector";
-import {useTranslation} from 'react-i18next';
+import { useTranslation } from "react-i18next";
+import { getTopLaps, getUserInfo } from "../../model/ModelTimer";
 
 export default function Rankings(props) {
   const [t, i18n] = useTranslation("global");
+  const [bestLaps, setBestLaps] = useState([]);
   const TextHeader = {
     headerText: "",
     subheaderText: t("header.rankings"),
   };
+
+  useEffect(() => {
+    const fetchCircuits = async () => {
+      const { data } = await getTopLaps({
+        map: "Escena_Ciudad",
+        size: 5,
+      });
+
+      data.map(async (oUser) => {
+        if (oUser.user) {
+          oUser.InfoDetail = await getUserInfo(oUser.user);
+        }
+
+        return oUser;
+      });
+      setBestLaps(data);
+    };
+    fetchCircuits();
+  }, []);
 
   return (
     <div className="mb-16">
@@ -18,12 +39,12 @@ export default function Rankings(props) {
           <HeaderSection text={TextHeader} />
         </div>
         <div>
-          <Filter/>
+          <Filter />
         </div>
         <section className="container mx-auto p-6 font-mono">
           <div className="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
             <div className="w-full overflow-x-auto">
-              <RankingTable />
+              <RankingTable arrayLaps={bestLaps} />
             </div>
           </div>
         </section>

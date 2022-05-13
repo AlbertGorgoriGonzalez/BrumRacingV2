@@ -6,6 +6,7 @@ import {useTranslation} from 'react-i18next';
 export default function Table(props) {
   const [t, i18n] = useTranslation("global");
     const nRows = 10;
+  const {arrayLaps} = props
   return(
     <table className="w-full">
         <thead>
@@ -17,10 +18,11 @@ export default function Table(props) {
           </tr>
         </thead>
         <tbody className="bg-white">
-        <ElementTable />
-        <ElementTable />
-        <ElementTable />
-        <ElementTable />
+        {arrayLaps.map((oItem) => {
+                return (
+                  <ElementTable item={oItem} />
+                );
+              })}
         </tbody>
       </table>
   );

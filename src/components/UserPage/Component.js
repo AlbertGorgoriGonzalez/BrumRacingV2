@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import imgUser from "../../assets/images/AlbertGorgori.jpg";
+import imgUser from "../../assets/images/user-icon-placeholder.png";
 
 import ListElementProfile from "./ListElementProfile";
 
@@ -36,35 +36,17 @@ setLogin(true)
 
   const setVisibility = (sScreen) => {
     switch (sScreen) {
-      case "My Profile":
+      case "profile.myProfile":
         setShowProfile(true);
         setShowAchiv(false);
-        setShowSettings(false);
-        setShowNotifications(false);
         break;
-      case "Notifications":
-        setShowProfile(false);
-        setShowAchiv(false);
-        setShowSettings(false);
-        setShowNotifications(true);
-        break;
-      case "My Achivements":
+      case "profile.myLaps":
         setShowProfile(false);
         setShowAchiv(true);
-        setShowSettings(false);
-        setShowNotifications(false);
-        break;
-      case "Settings":
-        setShowProfile(false);
-        setShowAchiv(false);
-        setShowSettings(true);
-        setShowNotifications(false);
         break;
       default:
         setShowProfile(true);
         setShowAchiv(false);
-        setShowSettings(false);
-        setShowNotifications(false);
         setLogin(true);
         break;
     }

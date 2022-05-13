@@ -1,8 +1,10 @@
 import React, { useRef } from "react";
 import Loader from "react-js-loader";
+import {useTranslation} from 'react-i18next';
 
 export default function SignUp(props) {
   const { onSubmitForm, isValidating } = props;
+
 
   const userAliasRef = useRef();
   const userEmailRef = useRef();
@@ -13,6 +15,7 @@ export default function SignUp(props) {
   const validForm = (oForm) => {
     return true
   }
+  const [t, i18n] = useTranslation("global");
 
   const handleSubmit = (oEvent) => {
     oEvent.preventDefault();
@@ -38,8 +41,8 @@ export default function SignUp(props) {
         <input type="hidden" name="remember" value="true" />
         <div className="rounded-md shadow-sm -space-y-px">
           <div>
-            <label for="email-address" className="sr-only">
-              Username
+            <label htmlFor="email-address" className="sr-only">
+              {t("register.username")}
             </label>
             <input
               id="username"
@@ -48,12 +51,12 @@ export default function SignUp(props) {
               autocomplete="username"
               required
               className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-              placeholder="Username"
+              placeholder={t("register.username")}
             />
           </div>
           <div>
-            <label for="email-address" className="sr-only">
-              Email address
+            <label htmlFor="email-address" className="sr-only">
+            {t("register.email")}
             </label>
             <input
               id="email-address"
@@ -63,12 +66,12 @@ export default function SignUp(props) {
               autocomplete="email"
               required
               className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-              placeholder="Email address"
+              placeholder={t("register.email")}
             />
           </div>
           <div>
-            <label for="email-address" className="sr-only">
-              Name
+            <label htmlFor="email-address" className="sr-only">
+            {t("register.name")}
             </label>
             <input
               id="name"
@@ -78,12 +81,12 @@ export default function SignUp(props) {
               autocomplete="name"
               required
               className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-              placeholder="Name"
+              placeholder={t("register.name")}
             />
           </div>
           <div>
-            <label for="email-address" className="sr-only">
-              Surname
+            <label htmlFor="email-address" className="sr-only">
+            {t("register.surname")}
             </label>
             <input
               id="surname"
@@ -92,12 +95,12 @@ export default function SignUp(props) {
               autocomplete="surname"
               required
               className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-              placeholder="Surname"
+              placeholder={t("register.surname")}
             />
           </div>
           <div>
-            <label for="password" className="sr-only">
-              Password
+            <label htmlFor="password" className="sr-only">
+            {t("register.password")}
             </label>
             <input
               id="password"
@@ -107,7 +110,7 @@ export default function SignUp(props) {
               autocomplete="curren"
               required
               className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-              placeholder="Password"
+              placeholder={t("register.password")}
             />
           </div>
         </div>
@@ -118,7 +121,7 @@ export default function SignUp(props) {
               href="/login"
               className="font-medium text-indigo-600 hover:text-indigo-500"
             >
-              Ya tienes una cuenta?
+              {t("register.alreadyAccount")}
             </a>
           </div>
         </div>
@@ -138,7 +141,7 @@ export default function SignUp(props) {
               onClick={handleSubmit}
               className="buttonClass group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
-              Sign up
+              {t("header.signup")}
             </button>)
           }
         </div>

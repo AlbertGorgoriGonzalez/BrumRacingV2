@@ -25,5 +25,40 @@
         "date":"Date",
         "time": "Time",
         "chooseCircuit": "Choose a circuit"
-    }
+    },
+    "register":{
+        "registerbrumbrum":"Register Brum Brum",
+        "username": "Username",
+        "email": "Email",
+        "name":"Name",
+        "surname": "Surname",
+        "password": "Password",
+        "alreadyAccount": "Do you have already an account?"
+    },
+    "login":{
+        "welcome": "Welcome to Brum Brum RacingGame",
+        "noRegister" : "Are you not register?",
+        "signIn": "Sign In"
+    },
+    "profile":{
+        "myProfile":"My Profile",
+        "myLaps":"My Best Lap",
+        "":""
+    },
+    "delete": "Delete",
+    "save":"Save",
+    "edit": "Edit",
+    "close":"Close",
+    "deleteUser": "¿Are you sure to delete this user?",
+    "deleteUserTitle": "Delete user",
+    "deletedSwal": "Deleted!",
+    "deletedSwallabel":"Your user has been deleted",
+    "logout":"Logout",
+    "devTeam": "Development team",
+    "meetUs": "Meet our team and our company",
+    "admin":"Administrator",
+    "client":"User",
+    "circuit": "Map",
+    "time": "Lap Time",
+    "noLaps": "No has hecho ninguna vuelta"
 }   

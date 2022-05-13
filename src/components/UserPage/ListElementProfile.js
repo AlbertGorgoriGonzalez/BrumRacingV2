@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import HeaderSection from "../Utils/HeaderSection";
+import {useTranslation} from 'react-i18next';
 
 export default function ListElementProfile(props) {
+  const [t] = useTranslation("global");
   const {visible} = props;
   const onSectionView = () => {
     visible(props.item.name);
@@ -28,7 +30,7 @@ export default function ListElementProfile(props) {
             />
           </svg>
         </span>
-        <span>{props.item.name}</span>
+        <span>{t(props.item.name)}</span>
       </a>
     </li>
   );

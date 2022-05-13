@@ -4,30 +4,34 @@ import HeaderSection from "../Utils/HeaderSection";
 import imgAlbert from '../../assets/images/AlbertGorgori.jpg';
 import imgBeimar from '../../assets/images/BeimarTorrez.jpg';
 import imgMarc from '../../assets/images/MarcMartinez.jpg';
+import imgMike from '../../assets/images/MiquelLopez.jpg';
+import {useTranslation} from 'react-i18next';
 
 export default function AboutUs() {
+  
+  const [t] = useTranslation("global");
   const DevelopmentTeam = [{
     name: "Albert",
     username: "Gorgori",
     position: "Senior Front-End Developer",
-    description: "Generar el mejor entretenimiento para los amantes y apasionados de los videojuegos de carreras",
+    description: "All the time you have to leave the space.",
     profileImg: imgAlbert,
     instagramURL: "https://www.instagram.com/albert.gorgori/",
     linkedinUrl: "https://www.linkedin.com/in/albert-gorgori-436a24115/"
   },{
     name: "Miquel",
     username: "Lopez",
-    position: "Senior Back-End Developer",
-    description: "Vivo el mundo de las carreras con mucha pasión, juntarlo con mi trabajo ha sido la mejor experiéncia de mi vida",
-    profileImg: imgAlbert,
+    position: "Senior Back-End Developer and Project Manager",
+    description: "Racing is my passion.",
+    profileImg: imgMike,
     instagramUrl: "https://www.instagram.com/miqueel97/",
     linkedinUrl: "https://www.linkedin.com/in/miquel-l%C3%B3pez-139246182/"
   },
   {
     name: "Marc",
     username: "Martínez",
-    position: "Junior Unity Developer",
-    description: "Es mágnifico el mundo de las carreras, este juego va a ser un éxito mundial",
+    position: "Senior Unity Developer",
+    description: "Being second is to be the first of the ones who lose.",
     profileImg: imgMarc,
     instagramUrl: "https://www.instagram.com/marc_martinez012/",
     linkedinUrl: "https://www.linkedin.com/in/marc-mart%C3%ADnez-morales-635427226/"
@@ -35,15 +39,15 @@ export default function AboutUs() {
   {
     name: "Beimar",
     username: "Torrez",
-    position: "Junior C# Developer",
-    description: "El juego está diseñado para disfrutar cada curva, no va a defraudar",
+    position: "Senior C# Developer",
+    description: "Fear is exciting for me.",
     profileImg: imgBeimar,
     instagramUrl: "https://www.instagram.com/beimartorrz/",
     linkedinUrl: "https://www.linkedin.com/in/beimar-torrez-10229620a/"
   }];
   const TextHeader = {
-    headerText: "Development Team",
-    subheaderText: "Conoce a los integrantes del equipo y de la empresa"
+    headerText: t("devTeam"),
+    subheaderText: t("meetUs")
 
   }
   return (

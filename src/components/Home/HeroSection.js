@@ -14,6 +14,11 @@ function HeroSection() {
   const onClickNav = () => {
     window.location.href = 'https://drive.google.com/drive/folders/195HH2hDo9lxXXboHVFubbGTAsTf1YJ1z'
   }
+
+  const onClickTuto = () => {
+    navigate('/tutorial');
+  }
+
   return (
     <div className='hero-container'>
       <video autoPlay loop muted>
@@ -34,7 +39,7 @@ function HeroSection() {
           className='btns'
           buttonStyle='btn--primary'
           buttonSize='btn--large'
-          onClick={<Navigate to={'/tutorial'}/>}
+          onClick={onClickTuto}
         >
           {t("home.seetutorial")} <i className='far fa-play-circle' />
         </Button>

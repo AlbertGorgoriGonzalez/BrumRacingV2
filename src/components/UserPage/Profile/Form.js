@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import Loader from "react-js-loader";
 import "./form.css";
 import Swal from "sweetalert2";
+import {useTranslation} from 'react-i18next';
 
 export default function SignUp(props) {
   const { onSubmitForm, showModal, userInfo } = props;
@@ -30,6 +31,8 @@ export default function SignUp(props) {
 
   const patternSpaces = /^[a-z\u00C0-\u02AB'´`]+\.?\s([a-z\u00C0-\u02AB'´`]+\.?\s?)+$/;
   const patternPwd = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+
+  const [t] = useTranslation("global");
 
 
   let validClassName =
@@ -137,7 +140,6 @@ export default function SignUp(props) {
     }
   }
 
-
   const handleSubmit = (oEvent) => {
     oEvent.preventDefault();
     let oForm = {
@@ -169,8 +171,8 @@ export default function SignUp(props) {
         <input type="hidden" name="remember" value="true" />
         <div className="rounded-md shadow-sm -space-y-px">
           <div>
-            <label for="username" className="">
-              Username:
+            <label htmlFor="username" className="">
+            {t("register.username")}:
             </label>
             <input
               id="username"
@@ -181,13 +183,13 @@ export default function SignUp(props) {
               autocomplete="username"
               required
               className={usernameIsValid ? validClassName : invalidClassName}
-              placeholder="Username"
+              placeholder={t("register.username")}
             />
           </div>
           <br />
           <div>
-            <label for="email-address" className="">
-              Email address:
+            <label htmlFor="email-address" className="">
+            {t("register.email")}:
             </label>
             <input
               id="email-address"
@@ -199,13 +201,13 @@ export default function SignUp(props) {
               autocomplete="email"
               required
               className={emailIsValid ? validClassName : invalidClassName}
-              placeholder="Email address"
+              placeholder={t("register.email")}
             />
           </div>
           <br />
           <div>
-            <label for="email-address" className="">
-              Name:
+            <label htmlFor="email-address" className="">
+            {t("register.name")}:
             </label>
             <input
               id="name"
@@ -222,8 +224,9 @@ export default function SignUp(props) {
           </div>
           <br />
           <div>
-            <label for="email-address" className="">
-              Surname:
+            <label htmlFor="email-address" className="">
+              
+              {t("register.surname")}:
             </label>
             <input
               id="surname"
@@ -234,13 +237,13 @@ export default function SignUp(props) {
               autocomplete="surname"
               required
               className={surnameIsValid ? validClassName : invalidClassName}
-              placeholder="Surname"
+              placeholder={t("register.surname")}
             />
           </div>
           <br />
           <div>
-            <label for="password" className="">
-              Password:
+            <label htmlFor="password" className="">
+            {t("register.password")}:
             </label>
             <input
               id="password"
@@ -252,7 +255,7 @@ export default function SignUp(props) {
               autocomplete="curren"
               required
               className={pwdIsValid ? validClassName : invalidClassName}
-              placeholder="Password"
+              placeholder={t("register.password")}
             />
           </div>
         </div>
@@ -263,7 +266,7 @@ export default function SignUp(props) {
               onClick={handleSubmit}
               className="buttonClass group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
-              Guardar
+              {t("save")}
             </button>
           )}
           {disabled && (
@@ -272,7 +275,7 @@ export default function SignUp(props) {
               onClick={showSave}
               className="buttonClass group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
-              Editar
+              {t("edit")}
             </button>
           )}
           

@@ -4,13 +4,16 @@ import RegisterForm from './Form';
 import { Navigate } from "react-router-dom";
 import { useUser } from "../../context/usuarioContext";
 import { parseBackendError } from "../../assets/utils/helper";
+import {useTranslation} from 'react-i18next';
 
 export default function SignUp() {
 
   const [validationForm, setValidationForm] = useState(false);
   const [bValid, setBValid ] = useState(false)
   const {signUpRegister, userInfo} = useUser();
-  const [navigate, setNavigate] = useState(false)
+  const [navigate, setNavigate] = useState(false);
+
+  const [t, i18n] = useTranslation("global");
 
   const handleSubmit = async (oForm) => {
       setValidationForm(false);
@@ -33,7 +36,7 @@ export default function SignUp() {
     <div>
       <img className="mx-auto h-12 w-auto" src={Logo} alt="Workflow" />
       <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-        Registro a Brum Brum RacingGame
+      {t("register.registerbrumbrum")}
       </h2>
     </div>
     <RegisterForm isValidating={validationForm} onSubmitForm={handleSubmit}/>

@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
 import "./form.css";
+import {useTranslation} from 'react-i18next';
 export default function ModalDelete(props) {
 
     const {cancelModal, deleteUser} = props
+    const [t] = useTranslation("global");
 
   return (
     <div class="flex items-center justify-center fixed left-0 bottom-0 w-full h-full bg-gray-800">
       <div class="bg-white rounded-lg w-1/2">
         <div class="flex flex-col items-start p-4">
           <div class="flex items-center w-full">
-            <div class="text-gray-900 font-medium text-lg">Borrar usuario</div>
+            <div class="text-gray-900 font-medium text-lg">{t("deleteUserTitle")}</div>
             <svg
               class="ml-auto fill-current text-gray-700 w-6 h-6 cursor-pointer"
               xmlns="http://www.w3.org/2000/svg"
@@ -20,16 +22,16 @@ export default function ModalDelete(props) {
           </div>
           <hr />
           <div class="">
-            ¿Estás seguro de borrar tu usuario de Brum Brum?
+          {t("deleteUser")}
           </div>
           <hr />
           <hr />
           <div class="ml-auto">
             <button onClick={deleteUser} class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-              Borrar
+            {t("delete")}
             </button>
             <button onClick={cancelModal} class="bg-transparent hover:bg-gray-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-              Close
+            {t("close")}
             </button>
           </div>
         </div>

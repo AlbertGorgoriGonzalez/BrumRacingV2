@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import imgBeimar from '../../assets/images/BeimarTorrez.jpg';
+import imgBeimar from '../../assets/images/user-icon-placeholder.png';
 
 export default function ElementTable(props) {
   const TextHeader = {

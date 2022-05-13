@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import HeaderSection from "../Utils/HeaderSection";
+import {useTranslation} from 'react-i18next';
 
 export default function LogoutButton(props) {
+
+  const [t] = useTranslation("global");
 
     const {logout, loginNavigation} = props
 
   const infoLogout = {
-    "name": "Logout",
+    "name": "logout",
     "href": "#",
     "imgSvg": "M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
   }
@@ -36,7 +39,7 @@ export default function LogoutButton(props) {
             />
           </svg>
         </span>
-        <span>{infoLogout.name}</span>
+        <span>{t(infoLogout.name)}</span>
       </a>
     </li>
   );

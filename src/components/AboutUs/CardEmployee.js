@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
-
+import {useTranslation} from 'react-i18next';
 
 export default function CardEmployee(props) {
+
+    const [t] = useTranslation("global");
 
     const {member} = props;
 
@@ -16,7 +18,7 @@ export default function CardEmployee(props) {
                                     <div className="px-6 mt-16">
                                         <h1 className="font-bold text-3xl text-center mb-1">{member.name} {member.surname}</h1>
                                         <p className="text-gray-800 text-sm text-center">{member.position}</p>
-                                        <p className="text-center text-gray-600 text-base pt-3 font-normal">{member.description}</p>
+                                        <p className="text-center text-gray-600 text-base pt-3 font-normal">{t(member.description)}</p>
                                         <div className="w-full flex justify-center pt-5 pb-5">
                                             <a href={member.linkedinUrl} className="mx-5">
                                                 <div aria-label="Linkedin" role="img">

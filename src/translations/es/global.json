@@ -25,5 +25,40 @@
         "date":"Fecha",
         "time": "Tiempo",
         "chooseCircuit": "Escoje un circuito"
-    }
+    },
+    "register":{
+        "registerbrumbrum":"Registrate en Brum Brum",
+        "username": "Usuario",
+        "email": "Correo electrónico",
+        "name":"Nombre",
+        "surname": "Apellido",
+        "password": "Contraseña",
+        "alreadyAccount": "ya tienes una cuenta?"
+    },
+    "login":{
+        "welcome": "Bienvenido a Brum Brum RacingGame",
+        "noRegister" : "Todavia no te has registrado?",
+        "signIn": "Accede"
+    },
+    "profile":{
+        "myProfile":"Mi Perfil",
+        "myLaps":"Mi Mejor Vuelta",
+        "":""
+    },
+    "delete": "Borrar",
+    "save":"Guardar",
+    "edit": "Editar",
+    "close":"Cerrar",
+    "deleteUser": "¿Estás seguro de borrar tu usuario de Brum Brum?",
+    "deleteUserTitle": "Borrar usuario",
+    "deletedSwal": "Borrado!",
+    "deletedSwallabel":"Tu usuario ha sido borrado",
+    "logout":"Salir",
+    "devTeam": "Equipo de desarrollo",
+    "meetUs": "Conoce a los integrantes del equipo y de la empresa",
+    "admin":"Administrador",
+    "client":"Usuario",
+    "circuit": "Circuito",
+    "time": "Tiempo Vuelta",
+    "noLaps": "No has hecho ninguna vuelta"
 }

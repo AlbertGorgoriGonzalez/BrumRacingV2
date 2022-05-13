@@ -4,15 +4,17 @@ import FormData from "./Form.js";
 import ModelHandler from "../../../model/ModelHandler";
 import "./form.css";
 import Swal from 'sweetalert2'
+import {useTranslation} from 'react-i18next';
 export default function Profile(props) {
+  
+  const [t] = useTranslation("global");
+
   const TextHeader = {
     headerText: "",
-    subheaderText: "My Profile",
+    subheaderText: t("profile.myProfile"),
   };
 
-  const {userInfo} = props
-
-  const [showModal, setShowModal] = useState(false)
+  const {userInfo} = props;
 
   const handleSubmit = (oForm) => {
     ModelHandler.updateProfile(oForm, 
@@ -38,8 +40,8 @@ export default function Profile(props) {
         ModelHandler.updateProfile(userInfo.id, 
           (oResponse)=>{
             Swal.fire(
-              'Borrado!',
-              'Tu usuario ha sido borrado',
+              t("deletedSwal"),
+              t("deletedSwallabel"),
               'success'
             )
         }, (oError)=> {
@@ -67,10 +69,10 @@ export default function Profile(props) {
             </div>
             <br></br>
             <button
-        onClick={showModalDelete}
-        className="buttonClass bg-red-500 group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          onClick={showModalDelete}
+          className="buttonClass bg-red-500 group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
       >
-        Borrar
+        {t("delete")}
       </button>
           </div>
         </div>
