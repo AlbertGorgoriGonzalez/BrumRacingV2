@@ -1,6 +1,7 @@
 import React from 'react';
 import '../../App.css';
 import { Button } from './Button';
+import { Button2 } from './Button2';
 import './HeroSection.css';
 import introGame from './introGame.mp4'
 import {useTranslation} from 'react-i18next';
@@ -12,7 +13,7 @@ function HeroSection() {
   const [t] = useTranslation("global");
 
   const onClickNav = () => {
-    window.location.href = 'https://drive.google.com/drive/folders/195HH2hDo9lxXXboHVFubbGTAsTf1YJ1z'
+    window.location.href = 'https://drive.google.com/drive/folders/16YPmy-b3vzOMOLI_mPdvzvKHyK3alrz1?usp=sharing'
   }
 
   const onClickTuto = () => {
@@ -27,19 +28,19 @@ function HeroSection() {
       <h1>RACING THE LIMITS</h1>
       <p>{t("home.racing")}</p>
       <div className='hero-btns'>
-        <Button
+        <Button2
           className='btns'
           buttonStyle='btn--outline'
           buttonSize='btn--large'
-          onClick={onClickNav}
+          onClickEvent={onClickNav}
         >
           {t("home.download")}
-        </Button>
+        </Button2>
         <Button
           className='btns'
           buttonStyle='btn--primary'
           buttonSize='btn--large'
-          onClick={onClickTuto}
+          onClickEvent='/tutorial'
         >
           {t("home.seetutorial")} <i className='far fa-play-circle' />
         </Button>
