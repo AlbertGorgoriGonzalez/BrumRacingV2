@@ -15,22 +15,27 @@ export default function Rankings(props) {
 
   useEffect(() => {
     const fetchCircuits = async () => {
-      const { data } = await getTopLaps({
+      const data = await getTopLaps({
         map: "Escena_Ciudad",
         size: 5,
       });
 
-      data.map(async (oUser) => {
-        if (oUser.user) {
-          oUser.InfoDetail = await getUserInfo(oUser.user);
-        }
-
-        return oUser;
-      });
-      setBestLaps(data);
+      setBestLaps(data.data);
+      
     };
     fetchCircuits();
   }, []);
+
+  const onChangeCircuit = async (sCircuit) => {
+      const { data } = await getTopLaps({
+        map: sCircuit,
+        size: 5
+      });
+
+        
+      setBestLaps(data)
+  }
+
 
   return (
     <div className="mb-16">
@@ -39,7 +44,7 @@ export default function Rankings(props) {
           <HeaderSection text={TextHeader} />
         </div>
         <div>
-          <Filter />
+          <Filter change={onChangeCircuit}/>
         </div>
         <section className="container mx-auto p-6 font-mono">
           <div className="w-full mb-8 overflow-hidden rounded-lg shadow-lg">

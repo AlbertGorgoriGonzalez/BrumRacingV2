@@ -7,6 +7,8 @@ export default function ElementTable(props) {
     subheaderText: "Rankings"
 
   }
+
+  const {item} = props
     
   return(
     
@@ -18,16 +20,16 @@ export default function ElementTable(props) {
                   <div className="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
                 </div>
                 <div>
-                  <p className="font-semibold text-black">Beimar Torrez</p>
-                  <p className="text-xs text-gray-600">NeymarBeimar</p>
+                  <p className="font-semibold text-black">{item.user}</p>
+                  <p className="text-xs text-gray-600"></p>
                 </div>
               </div>
             </td>
-            <td className="px-4 py-3 text-ms font-semibold border">1.10.000</td>
+            <td className="px-4 py-3 text-ms font-semibold border">{parseFloat(item.time, 2)}s</td>
             <td className="px-4 py-3 text-xs border">
-              Spain
+              {item.map}
             </td>
-            <td className="px-4 py-3 text-sm border">03/02/2022</td>
+            <td className="px-4 py-3 text-sm border">{item.created_at}</td>
           </tr>
           
   );

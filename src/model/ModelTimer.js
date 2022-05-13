@@ -28,12 +28,11 @@ export const getUserInfo = async (userId) => {
     const config = {
         headers:{
         'X-Requested-With': 'XMLHttpRequest',
-        'X-CSRF-TOKEN' : 'X',
-        headers: { Authorization: `Bearer ${token}` }
+        'X-CSRF-TOKEN' : 'X'
       }
     }
       try {
-        const response = await axios.get(urlApiLaravel + "/user/"+userId, config);
+        const response = await axios.get(urlApiLaravel + "/userSimple/"+userId, config);
   
         return response.data;
       } catch (error) {

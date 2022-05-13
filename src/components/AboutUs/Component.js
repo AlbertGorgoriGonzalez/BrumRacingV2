@@ -4,7 +4,9 @@ import HeaderSection from "../Utils/HeaderSection";
 import imgAlbert from '../../assets/images/AlbertGorgori.jpg';
 import imgBeimar from '../../assets/images/BeimarTorrez.jpg';
 import imgMarc from '../../assets/images/MarcMartinez.jpg';
-import imgMike from '../../assets/images/MiquelLopez.jpg';
+
+import imgPlace from '../../assets/images/user-icon-placeholder.png';
+
 import {useTranslation} from 'react-i18next';
 
 export default function AboutUs() {
@@ -23,7 +25,7 @@ export default function AboutUs() {
     username: "Lopez",
     position: "Senior Back-End Developer and Project Manager",
     description: "Racing is my passion.",
-    profileImg: imgMike,
+    profileImg: imgPlace,
     instagramUrl: "https://www.instagram.com/miqueel97/",
     linkedinUrl: "https://www.linkedin.com/in/miquel-l%C3%B3pez-139246182/"
   },
