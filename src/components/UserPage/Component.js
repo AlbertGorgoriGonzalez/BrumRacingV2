@@ -60,9 +60,9 @@ setLogin(true)
           <div className="w-3/12 bg-white rounded p-3 shadow-lg">
             <UserInfoTag imgUser={imgUser} />
             <ul className="space-y-2 text-sm">
-              {Items.map((oItem) => {
+              {Items.map((oItem, index) => {
                 return (
-                  <ListElementProfile item={oItem} visible={setVisibility} />
+                  <ListElementProfile item={oItem} visible={setVisibility} key={index}/>
                 );
               })}
               <LogoutButton logout={logout} loginNavigation={navigateLogin} />

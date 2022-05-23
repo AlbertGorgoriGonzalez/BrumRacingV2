@@ -66,8 +66,8 @@ export default function AboutUs() {
               className="lg:flex md:flex sm:flex items-center xl:justify-between flex-wrap md:justify-around sm:justify-around lg:justify-around"
             >
                 {
-                    DevelopmentTeam.map( oMember => {
-                        return <CardEmployee member={oMember} />
+                    DevelopmentTeam.map( (oMember, index) => {
+                        return <CardEmployee member={oMember} key={index}/>
                     })
 
                 }

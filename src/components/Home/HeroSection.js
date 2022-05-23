@@ -13,11 +13,11 @@ function HeroSection() {
   const [t] = useTranslation("global");
 
   const onClickNav = () => {
-    window.location.href = 'https://drive.google.com/drive/folders/16YPmy-b3vzOMOLI_mPdvzvKHyK3alrz1?usp=sharing'
+    window.location.href = 'https://drive.google.com/drive/folders/12Sf5srBIMRl23OJIAc0pauVjnxIQR0Po?usp=sharing'
   }
 
   const onClickTuto = () => {
-    navigate('/tutorial');
+    window.location.href = window.location.href + 'tutorial'
   }
 
   return (
@@ -40,7 +40,7 @@ function HeroSection() {
           className='btns'
           buttonStyle='btn--primary'
           buttonSize='btn--large'
-          onClickEvent='/tutorial'
+          onClickEvent={onClickTuto}
         >
           {t("home.seetutorial")} <i className='far fa-play-circle' />
         </Button>

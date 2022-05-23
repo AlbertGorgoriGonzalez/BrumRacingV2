@@ -1,31 +1,98 @@
 import React, { useState, useEffect, useRef } from "react";
 import Logo from '../../assets/images/Logo.png';
 import RegisterForm from './Form';
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { useUser } from "../../context/usuarioContext";
 import { parseBackendError } from "../../assets/utils/helper";
 import {useTranslation} from 'react-i18next';
+import Swal from "sweetalert2";
 
 export default function SignUp() {
 
   const [validationForm, setValidationForm] = useState(false);
   const [bValid, setBValid ] = useState(false)
   const {signUpRegister, userInfo} = useUser();
-  const [navigate, setNavigate] = useState(false);
+  const navigate = useNavigate();
 
   const [t, i18n] = useTranslation("global");
+
+  const navToInfo = () => {
+    navigate('/userInfo');
+  }
+
+  const validateForm = (oData) => {
+    const emailValidation = validateEmail(oData.email);
+    const pwdValidation = new RegExp('^[0-9a-zA-Z]{5,}$');
+    const pwdToValidate = oData.password.replace(/ /g, "");
+
+    let bValidPwd = true;
+    let bValid = true;
+
+    if(!oData.username){
+      bValid = false;
+    }
+
+    if(!oData.name){
+      bValid = false;
+    }
+
+    if(!oData.surname){
+      bValid = false;
+    }
+
+    if(pwdValidation.test(pwdToValidate)){
+      bValidPwd = false;
+    }
+
+    return {emailValidation, bValidPwd, bValid}
+  }
+
+  const validateEmail = (email) => {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+  };
 
   const handleSubmit = async (oForm) => {
       setValidationForm(false);
 
-      let response = await signUpRegister(oForm);
+      let oFormvalidation = validateForm(oForm)
 
-    if(response === true){
-      setNavigate(response);
-    }else{
-      parseBackendError(response)
-      
-    }
+      if(oFormvalidation.bValid && oFormvalidation.bValidPwd && oFormvalidation.emailValidation){
+        let response = await signUpRegister(oForm);
+
+        if(response === true){
+          Swal.fire(
+            t("registered"),
+            t("userRegister"),
+            'success'
+          )
+          navToInfo()
+        }else{
+          parseBackendError(response)
+          
+        }
+      }else if(!oFormvalidation.emailValidation){
+        Swal.fire(
+          t("emailErr"),
+          t("userEmailErr"),
+          'error'
+        )
+      }else if(!oFormvalidation.bValidPwd){
+        Swal.fire(
+          t("pwdErr"),
+          t("userPwdErr"),
+          'error'
+        )
+      }else{
+        Swal.fire(
+          t("fieldsErr"),
+          t("userFieldsErr"),
+          'error'
+        )
+      }
   }
 
 
@@ -41,9 +108,6 @@ export default function SignUp() {
     </div>
     <RegisterForm isValidating={validationForm} onSubmitForm={handleSubmit}/>
   </div>
-  {navigate &&
-    <Navigate to={'/userInfo'} />
-  }
 </div>
   );
 }

@@ -3,7 +3,6 @@ import Logo from '../../assets/images/Logo.png';
 import { useUser } from "../../context/usuarioContext";
 import { Navigate } from "react-router-dom";
 import { parseBackendError } from "../../assets/utils/helper";
-import Swal from "sweetalert2";
 import {useTranslation} from 'react-i18next';
 
 
@@ -57,11 +56,11 @@ export default function SignIn() {
       <div className="rounded-md shadow-sm -space-y-px">
         <div>
           <label htmlFor="email-address" className="sr-only">{t("register.email")}</label>
-          <input id="email-address" name="email" ref={userEmailRef} type="email" autocomplete="email" required className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder={t("register.email")}/>
+          <input id="email-address" name="email" ref={userEmailRef} type="email" autoComplete="email" required className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder={t("register.email")}/>
         </div>
         <div>
           <label htmlFor="password" className="sr-only">{t("register.password")}</label>
-          <input id="password" name="password" type="password" ref={userPasswordRef} autocomplete="curren" required className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder={t("register.password")}/>
+          <input id="password" name="password" type="password" ref={userPasswordRef} autoComplete="curren" required className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder={t("register.password")}/>
         </div>
       </div>
 

@@ -48,7 +48,7 @@ export default function SignUp(props) {
               id="username"
               name="username"
               ref={userAliasRef}
-              autocomplete="username"
+              autoComplete="username"
               required
               className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
               placeholder={t("register.username")}
@@ -63,7 +63,7 @@ export default function SignUp(props) {
               name="email"
               ref={userEmailRef}
               type="email"
-              autocomplete="email"
+              autoComplete="email"
               required
               className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
               placeholder={t("register.email")}
@@ -78,7 +78,7 @@ export default function SignUp(props) {
               name="name"
               type="name"
               ref={userNameRef}
-              autocomplete="name"
+              autoComplete="name"
               required
               className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
               placeholder={t("register.name")}
@@ -92,7 +92,7 @@ export default function SignUp(props) {
               id="surname"
               name="surname"
               ref={userSurnameRef}
-              autocomplete="surname"
+              autoComplete="surname"
               required
               className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
               placeholder={t("register.surname")}
@@ -107,7 +107,7 @@ export default function SignUp(props) {
               name="password"
               ref={userPasswordRef}
               type="password"
-              autocomplete="curren"
+              autoComplete="curren"
               required
               className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
               placeholder={t("register.password")}

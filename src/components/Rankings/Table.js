@@ -18,9 +18,9 @@ export default function Table(props) {
           </tr>
         </thead>
         <tbody className="bg-white">
-        {arrayLaps.map((oItem) => {
+        {arrayLaps.map((oItem, keyIndex) => {
                 return (
-                  <ElementTable item={oItem} />
+                  <ElementTable item={oItem} key={keyIndex}/>
                 );
               })}
         </tbody>

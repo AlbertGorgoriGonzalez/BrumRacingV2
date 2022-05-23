@@ -33,10 +33,12 @@ export function UserProvider(props) {
       'X-CSRF-TOKEN' : 'X'
     }
     try {
-      const {data} = await axios.post(urlApiLaravel + "/login", oForm, headers);
+      let {data} = await axios.post(urlApiLaravel + "/login", oForm, headers);
+      if(data && data.body){
+      data.body.password = oForm.password 
+      }
 
       setUserInfo(data.body);
-      //TODO: TOKENS
       setToken(data.token);
 
       return true;
@@ -52,11 +54,13 @@ export function UserProvider(props) {
 
   async function signUpRegister(oUserInfo) {
     try {
-        const {data} = await axios.post(urlApiLaravel + "/user", oUserInfo);
-  
-        setUserInfo(data[0]);
-    //TODO: TOKENS
-    setToken(data[1].token);
+        let {data} = await axios.post(urlApiLaravel + "/user", oUserInfo);
+        if(data && data.User){
+          data.User.password = oUserInfo.password 
+          }
+          
+        setUserInfo(data.User);
+        setToken(data.token);
 
         return true;
       } catch (error) {
@@ -73,13 +77,37 @@ export function UserProvider(props) {
     deleteToken();
   }
 
-  function updateUser(){}
+  async function updateUser(oData){
+    try {
+      let headers = {
+        "Authorization" : `Bearer ${getToken()}`
+      }
+
+      let {data} = await axios.put(urlApiLaravel + "/user", oData, headers);
+      
+      if(data && data.User){
+        data.User.password = oData.password 
+        }
+        
+      setUserInfo(data.User);
+      setToken(data.token);
+
+      return true;
+    } catch (error) {
+        if(error){
+          return error.response
+        }else{
+            return true
+        }
+    }
+  }
 
   const value = useMemo(() => {
     return {
       userInfo,
       loadingUser,
       signUpRegister,
+      updateUser,
       login,
       logout,
     };

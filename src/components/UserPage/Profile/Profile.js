@@ -5,6 +5,7 @@ import ModelHandler from "../../../model/ModelHandler";
 import "./form.css";
 import Swal from 'sweetalert2'
 import {useTranslation} from 'react-i18next';
+import { useUser } from "../../../context/usuarioContext";
 export default function Profile(props) {
   
   const [t] = useTranslation("global");
@@ -16,40 +17,28 @@ export default function Profile(props) {
 
   const {userInfo} = props;
 
-  const handleSubmit = (oForm) => {
-    ModelHandler.updateProfile(oForm, 
-      (oResponse)=>{
+  const {updateUser} = useUser();
 
-    }, (oError)=> {
+  const handleSubmit = async (oForm) => {
+    const response = await updateUser(oForm);
 
-    })
-  }
-
-  const showModalDelete = () => {
-    Swal.fire({
-      title: 'Borrar Usuario',
-      text: "¿Quieres borrar tu usuario?",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#d33',
-      cancelButtonColor: '#000000',
-      confirmButtonText: 'Borrar',
-      cancelButtonText: 'Cancelar',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        ModelHandler.updateProfile(userInfo.id, 
-          (oResponse)=>{
-            Swal.fire(
-              t("deletedSwal"),
-              t("deletedSwallabel"),
-              'success'
-            )
-        }, (oError)=> {
+    if(response === true){
+      Swal.fire(
+        t("updateok"),
+        t("userUpdated"),
+        'success'
+      )
+    }else{
+      Swal.fire(
+        t("updatedErr"),
+        t("updatedUserErr"),
+        'error'
+      )
+    }
     
-        })
-      }
-    })
   }
+
+  
 
   return (
     <>
@@ -65,15 +54,10 @@ export default function Profile(props) {
               aria-label="Behind the scenes People "
               className="lg:flex md:flex sm:flex items-center xl:justify-between flex-wrap md:justify-around sm:justify-around lg:justify-around"
             >
-              <FormData onSubmitForm={handleSubmit} userInfo={userInfo} showModal={showModalDelete}/>
+              <FormData onSubmitForm={handleSubmit} userInfo={userInfo} />
             </div>
             <br></br>
-            <button
-          onClick={showModalDelete}
-          className="buttonClass bg-red-500 group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-      >
-        {t("delete")}
-      </button>
+            
           </div>
         </div>
       </dh-component>

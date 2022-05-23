@@ -55,9 +55,9 @@ function Navbar() {
       <ul className={click ? "nav-menu active" : "nav-menu"}>
         {MenuItems.map((item, index) => {
           return (
-            <Link to={"/" + item.linkName}>
+            <Link to={"/" + item.linkName} key={index}>
               <li>
-                <a className={item.cName} href={item.url}>
+                <a className={item.cName} key={index} href={item.url}>
                   {t(item.title)}
                 </a>
               </li>

@@ -60,5 +60,17 @@
     "client":"User",
     "circuit": "Map",
     "time": "Lap Time",
-    "noLaps": "No has hecho ninguna vuelta"
+    "noLaps": "Not laptimes made",
+    "registered": "User registered",
+    "userRegister": "Your user has been registered",
+    "emailErr":"Error email",
+    "userEmailErr":"The email is incorrect",
+    "pwdErr":"Error Password",
+    "userPwdErr":"The password is incorrect ",
+    "fieldsErr":"Error fields",
+    "userFieldsErr":"There are empty fields",
+    "updateok":"User modified",
+    "userUpdated":"The user has been modified",
+    "updatedErr":"Error updating",
+    "updatedUserErr":"It has been an error modifying the user"
 }   

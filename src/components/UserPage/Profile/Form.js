@@ -3,6 +3,7 @@ import Loader from "react-js-loader";
 import "./form.css";
 import Swal from "sweetalert2";
 import {useTranslation} from 'react-i18next';
+import ModelHandler from "../../../model/ModelHandler";
 
 export default function SignUp(props) {
   const { onSubmitForm, showModal, userInfo } = props;
@@ -115,19 +116,49 @@ export default function SignUp(props) {
     let bValid = true
     let bEmail = validateEmail(oForm.email);
 
+    const pwdValidation = new RegExp('^[0-9a-zA-Z]{5,}$');
+    const pwdToValidate = oForm.password.replace(/ /g, "");
+
+    if(pwdValidation.test(pwdToValidate)){
+      bValid = false;
+    }
+
     if(!bEmail){
       bValid = false
     }
+
+    if(!oForm.username){
+      bValid = false;
+    }
+
+    if(!oForm.name){
+      bValid = false;
+    }
+
+    if(!oForm.surname){
+      bValid = false;
+    }
+
     return bValid;
   };
 
+  const validateEmailPattern = (email) => {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+  };
+
   const validateEmail = (sEmail) => {
-    let atpos = sEmail.indexOf("@");
-    let dotpos = sEmail.lastIndexOf(".");
+    const emailValidation = validateEmailPattern(sEmail);
     
-    if (atpos < 1 || ( dotpos - atpos < 2 )) {
-       alert("Please enter correct email ID")
-       document.myForm.EMail.focus() ;
+    if (!emailValidation) {
+      Swal.fire(
+        t("emailErr"),
+        t("userEmailErr"),
+        'error'
+      )
        return false;
     }else {
       return true
@@ -138,6 +169,32 @@ export default function SignUp(props) {
     if (disabled) {
       setDisabled(false);
     }
+  }
+
+  const showModalDelete = () => {
+    Swal.fire({
+      title: 'Borrar Usuario',
+      text: "¿Quieres borrar tu usuario?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#000000',
+      confirmButtonText: 'Borrar',
+      cancelButtonText: 'Cancelar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        ModelHandler.updateProfile(userInfo.id, 
+          (oResponse)=>{
+            Swal.fire(
+              t("deletedSwal"),
+              t("deletedSwallabel"),
+              'success'
+            )
+        }, (oError)=> {
+    
+        })
+      }
+    })
   }
 
   const handleSubmit = (oEvent) => {
@@ -180,7 +237,7 @@ export default function SignUp(props) {
               disabled={disabled}
               onChange={(e) => setUsernameInput(e.target.value)}
               value={usernameInput}
-              autocomplete="username"
+              autoComplete="username"
               required
               className={usernameIsValid ? validClassName : invalidClassName}
               placeholder={t("register.username")}
@@ -198,7 +255,7 @@ export default function SignUp(props) {
               onChange={(e) => setEmailInput(e.target.value)}
               value={emailInput}
               type="email"
-              autocomplete="email"
+              autoComplete="email"
               required
               className={emailIsValid ? validClassName : invalidClassName}
               placeholder={t("register.email")}
@@ -216,7 +273,7 @@ export default function SignUp(props) {
               disabled={disabled}
               onChange={(e) => setNameInput(e.target.value)}
               value={nameInput}
-              autocomplete="name"
+              autoComplete="name"
               required
               className={nameIsValid ? validClassName : invalidClassName}
               placeholder="Name"
@@ -234,7 +291,7 @@ export default function SignUp(props) {
               disabled={disabled}
               onChange={(e) => setSurnameInput(e.target.value)}
               value={surnameInput}
-              autocomplete="surname"
+              autoComplete="surname"
               required
               className={surnameIsValid ? validClassName : invalidClassName}
               placeholder={t("register.surname")}
@@ -252,7 +309,7 @@ export default function SignUp(props) {
               onChange={(e) => setPwdInput(e.target.value)}
               value={pwdInput}
               type="password"
-              autocomplete="curren"
+              autoComplete="curren"
               required
               className={pwdIsValid ? validClassName : invalidClassName}
               placeholder={t("register.password")}
@@ -277,6 +334,15 @@ export default function SignUp(props) {
             >
               {t("edit")}
             </button>
+          )}
+          <br />
+          {disabled && (
+            <button
+            onClick={showModalDelete}
+            className="buttonClass bg-red-500 group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                >
+                  {t("delete")}
+                </button>
           )}
           
         </div>

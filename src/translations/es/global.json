@@ -60,5 +60,17 @@
     "client":"Usuario",
     "circuit": "Circuito",
     "time": "Tiempo Vuelta",
-    "noLaps": "No has hecho ninguna vuelta"
+    "noLaps": "No has hecho ninguna vuelta",
+    "registered": "Usuario registrado",
+    "userRegister": "Tu usuario ha sido registrado",
+    "emailErr":"Error email",
+    "userEmailErr":"El Email es incorrecto",
+    "pwdErr":"Error contraseña",
+    "userPwdErr":"Error al introducir la contraseña, escribe otra",
+    "fieldsErr":"Error en los campos",
+    "userFieldsErr":"Hay campos vacíos",
+    "updateok":"Usuario modificado",
+    "userUpdated":"El usuario ha sido modificado correctamente",
+    "updatedErr":"Error al modificar",
+    "updatedUserErr":"Ha habido un error al modificar el usuario"
 }
