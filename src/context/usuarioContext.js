@@ -77,13 +77,17 @@ export function UserProvider(props) {
     deleteToken();
   }
 
-  async function updateUser(oData){
+  async function updateUser(oData, sId){
     try {
       let headers = {
-        "Authorization" : `Bearer ${getToken()}`
+        Authorization : "Bearer " + `${getToken()}`,
+        'X-Requested-With': 'XMLHttpRequest',
+        'X-CSRF-TOKEN' : 'X'
       }
 
-      let {data} = await axios.put(urlApiLaravel + "/user", oData, headers);
+      axios.defaults.headers.common["Accept"] = "application/json"
+
+      let {data} = await axios.put(urlApiLaravel + "/user/"+sId, oData, headers);
       
       if(data && data.User){
         data.User.password = oData.password 
@@ -102,12 +106,38 @@ export function UserProvider(props) {
     }
   }
 
+  async function deleteUser(sId){
+    try {
+      let headers = {
+        Authorization : "Bearer " + `${getToken()}`,
+        'X-Requested-With': 'XMLHttpRequest',
+        'X-CSRF-TOKEN' : 'X'
+      }
+
+      axios.defaults.headers.common["Accept"] = "application/json"
+
+      let {data} = await axios.delete(urlApiLaravel + "/user/"+sId, headers);
+        
+      setUserInfo(null);
+      setToken(null);
+
+      return true;
+    } catch (error) {
+        if(error){
+          return error.response
+        }else{
+            return true
+        }
+    }
+  }
+
   const value = useMemo(() => {
     return {
       userInfo,
       loadingUser,
       signUpRegister,
       updateUser,
+      deleteUser,
       login,
       logout,
     };

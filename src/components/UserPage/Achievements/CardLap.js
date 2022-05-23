@@ -20,6 +20,14 @@ export default function CardLap(props) {
         }
       }, []);
 
+    const parseName = (sMap) => {
+        if(sMap.includes('Monaco')){
+            return "Mónaco"
+          }else{
+            return "City Circuit"
+          }
+    }
+
   return(
     <div role="listitem" className="xl:w-1/3 sm:w-3/4 md:w-2/5 relative mt-16 mb-32 sm:mb-24 xl:max-w-sm lg:w-2/5">
                                 <div className="rounded overflow-hidden shadow-md bg-white">
@@ -29,8 +37,8 @@ export default function CardLap(props) {
                                         </div>
                                     </div>
                                     <div className="px-6 mt-16">
-                                        <h3 className="font-bold text-1xl text-center mb-1">{t("circuit")}: {bestLap.map}</h3>
-                                        <p className="text-center text-gray-600 text-base pt-3 font-normal">{t("time")}: {bestLap.time}</p>
+                                        <h3 className="font-bold text-1xl text-center mb-1">{t("circuit")}: {parseName(bestLap.map)}</h3>
+                                        <p className="text-center text-gray-600 text-base pt-3 font-normal">{t("time")}: {parseFloat(bestLap.time).toFixed(2)} S</p>
                                     </div>
                                 </div>
                             </div>

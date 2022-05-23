@@ -6,7 +6,7 @@ import {useTranslation} from 'react-i18next';
 import ModelHandler from "../../../model/ModelHandler";
 
 export default function SignUp(props) {
-  const { onSubmitForm, showModal, userInfo } = props;
+  const { onSubmitForm, showModal, userInfo, deleteUser } = props;
 
   const [disabled, setDisabled] = useState(true);
 
@@ -168,6 +168,8 @@ export default function SignUp(props) {
   const showSave = () => {
     if (disabled) {
       setDisabled(false);
+    }else{
+      setDisabled(true)
     }
   }
 
@@ -183,7 +185,7 @@ export default function SignUp(props) {
       cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.isConfirmed) {
-        ModelHandler.updateProfile(userInfo.id, 
+        deleteUser(userInfo.id, 
           (oResponse)=>{
             Swal.fire(
               t("deletedSwal"),
@@ -197,8 +199,7 @@ export default function SignUp(props) {
     })
   }
 
-  const handleSubmit = (oEvent) => {
-    oEvent.preventDefault();
+  const handleSubmit = () => {
     let oForm = {
       username: usernameInput,
       email: emailInput,
@@ -282,7 +283,6 @@ export default function SignUp(props) {
           <br />
           <div>
             <label htmlFor="email-address" className="">
-              
               {t("register.surname")}:
             </label>
             <input
@@ -316,10 +316,11 @@ export default function SignUp(props) {
             />
           </div>
         </div>
-        <div>
-          {!disabled && (
+        <div>     
+        </div>
+      </form>
+      {!disabled && (
             <button
-              type="submit"
               onClick={handleSubmit}
               className="buttonClass group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
@@ -328,7 +329,6 @@ export default function SignUp(props) {
           )}
           {disabled && (
             <button
-              type="submit"
               onClick={showSave}
               className="buttonClass group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
@@ -336,7 +336,7 @@ export default function SignUp(props) {
             </button>
           )}
           <br />
-          {disabled && (
+      {disabled && (
             <button
             onClick={showModalDelete}
             className="buttonClass bg-red-500 group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
@@ -344,9 +344,16 @@ export default function SignUp(props) {
                   {t("delete")}
                 </button>
           )}
-          
-        </div>
-      </form>
+        <br />
+        <br />
+        {!disabled && (
+            <button
+            onClick={showSave}
+            className="buttonClass bg-red-500 group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                >
+                  {t("cancel")}
+                </button>
+          )}
       <label />
     </>
   );

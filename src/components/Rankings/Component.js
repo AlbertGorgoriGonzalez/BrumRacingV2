@@ -27,10 +27,23 @@ export default function Rankings(props) {
   }, []);
 
   const onChangeCircuit = async (sCircuit) => {
-      const { data } = await getTopLaps({
+      let { data } = await getTopLaps({
         map: sCircuit,
         size: 5
       });
+
+      if(sCircuit === 'Circuito1_Monaco_DoublePlayer'){
+        const { data: dataSingle } = await getTopLaps({
+          map: 'Circuito1_Monaco_SinglePlayer',
+          size: 5
+        });
+
+        data =  data.concat(dataSingle)
+
+        data = data.sort(function(a, b) {
+          return a.time - b.time;
+        })
+      }
 
         
       setBestLaps(data)

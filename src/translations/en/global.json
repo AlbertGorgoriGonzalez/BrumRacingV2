@@ -72,5 +72,6 @@
     "updateok":"User modified",
     "userUpdated":"The user has been modified",
     "updatedErr":"Error updating",
-    "updatedUserErr":"It has been an error modifying the user"
+    "updatedUserErr":"It has been an error modifying the user",
+    "cancel": "Cancel"
 }   

@@ -72,5 +72,6 @@
     "updateok":"Usuario modificado",
     "userUpdated":"El usuario ha sido modificado correctamente",
     "updatedErr":"Error al modificar",
-    "updatedUserErr":"Ha habido un error al modificar el usuario"
+    "updatedUserErr":"Ha habido un error al modificar el usuario",
+    "cancel": "Cancelar"
 }

@@ -17,10 +17,10 @@ export default function Profile(props) {
 
   const {userInfo} = props;
 
-  const {updateUser} = useUser();
+  const {updateUser, deleteUser} = useUser();
 
-  const handleSubmit = async (oForm) => {
-    const response = await updateUser(oForm);
+  const handleSubmit = async (event, oForm) => {
+    const response = await updateUser(oForm, userInfo.id);
 
     if(response === true){
       Swal.fire(
@@ -54,7 +54,7 @@ export default function Profile(props) {
               aria-label="Behind the scenes People "
               className="lg:flex md:flex sm:flex items-center xl:justify-between flex-wrap md:justify-around sm:justify-around lg:justify-around"
             >
-              <FormData onSubmitForm={handleSubmit} userInfo={userInfo} />
+              <FormData onSubmitForm={handleSubmit} deleteUser={deleteUser} userInfo={userInfo} />
             </div>
             <br></br>
             

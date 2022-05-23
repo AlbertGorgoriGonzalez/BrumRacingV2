@@ -9,6 +9,19 @@ export default function ElementTable(props) {
   }
 
   const {item} = props
+
+  const parseMapName = (sMap) => {
+    if(sMap.includes('Monaco')){
+      return "Mónaco"
+    }else{
+      return "City Circuit"
+    }
+  }
+
+  const parseDate = (sDate) => {
+    let splitted = sDate.split('T');
+    return splitted[0]
+  }
     
   return(
     
@@ -25,11 +38,11 @@ export default function ElementTable(props) {
                 </div>
               </div>
             </td>
-            <td className="px-4 py-3 text-ms font-semibold border">{parseFloat(item.time, 2)}s</td>
+            <td className="px-4 py-3 text-ms font-semibold border">{parseFloat(item.time).toFixed(2)}s</td>
             <td className="px-4 py-3 text-xs border">
-              {item.map}
+              {parseMapName(item.map)}
             </td>
-            <td className="px-4 py-3 text-sm border">{item.created_at}</td>
+            <td className="px-4 py-3 text-sm border">{parseDate(item.created_at)}</td>
           </tr>
           
   );
